@@ -91,11 +91,11 @@ class RubyApp < Gtk::Window
     def mensaje_dialogo(index)
       mensaje = case index
 		  when "0" 
-		    "Creador del lenguaje ruby."
+		    "Creador del lenguaje Ruby."
 		  when "1" 
 		    "Creador del Proyecto GNU."
 		  when "2" 
-		    "Creador del kernel Linux."
+		    "Creador del kernel Linux y Git."
 		  when "3" 
 		    "Creador del proyecto GTK+."  
 		  else 
@@ -113,8 +113,8 @@ class RubyApp < Gtk::Window
         about = Gtk::AboutDialog.new
         about.set_program_name "GTK y Ruby 2016"
         about.set_version "1.0"
-        about.set_copyright "(cc) Erneto Flores"
-        about.set_comments "Una simple muestra de lo que se puede hacer con gtk y ruby"
+        about.set_copyleft " Andruwx Free"
+        about.set_comments "Una muestra de lo que se puede hacer con Gtk y Ruby"
         about.set_logo Gdk::Pixbuf.new "ella.png"
         about.run
         about.destroy
