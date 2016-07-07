@@ -7,6 +7,7 @@ require 'gtk2'
 class RubyApp < Gtk::Window
  
    #constructor de la clase
+   
    def initialize
         super
 	#atributos de clase
@@ -47,8 +48,8 @@ class RubyApp < Gtk::Window
  
     #crea un menu y lo agrega al atributo @menu
     def menu_bar
-      menues = {"Archivo" => ["Nuevo","Salir"],
-                "Ayuda" => "Acerca de..."}
+      menues = {"Archivo" => ["Nuevo","Abrir","Salir"],
+                "Ayuda" => "Acerca de.."}
       menues.each do |menu_key, item_value|
 	    menu = Gtk::Menu.new
 	    submenu = Gtk::MenuItem.new menu_key
