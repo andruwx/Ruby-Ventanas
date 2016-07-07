@@ -14,7 +14,7 @@ class RubyApp < Gtk::Window
 	@fixed= Gtk::Fixed.new #crea un contenedor de tipo fixed vacío
 	@combo= Gtk::ComboBox.new #crea un combobox vacío
 	@menu= Gtk::MenuBar.new #crea una barra de menu vacía
-	@boton= Gtk::Button.new "¿Qué Creo?" #crea un botón y le da valor al label
+	@boton= Gtk::Button.new "¿Qué Creo algunos de los siguientes Linuxeros?" #crea un botón y le da valor al label
         set_windows
     end
  
@@ -43,13 +43,13 @@ class RubyApp < Gtk::Window
       contenido.each do |item|
         @combo.append_text item
       end
-      [@combo,110,100]
+      [@combo,120,120]
     end
  
     #crea un menu y lo agrega al atributo @menu
     def menu_bar
       menues = {"Archivo" => ["Nuevo","Abrir","Salir"],
-                "Ayuda" => "Acerca de.."}
+                "Ayuda" => "Acerca de...."}
       menues.each do |menu_key, item_value|
 	    menu = Gtk::Menu.new
 	    submenu = Gtk::MenuItem.new menu_key
@@ -58,13 +58,13 @@ class RubyApp < Gtk::Window
 	            item_menu = Gtk::MenuItem.new item_v
 	            menu.append item_menu
 	            widget_activo(item_menu,1) if item_v == "Salir"
-		    widget_activo(item_menu,2) if item_v == "Acerca de..."
+		    widget_activo(item_menu,2) if item_v == "Acerca de...."
 	        end
 	    else
 	        item_menu = Gtk::MenuItem.new item_value
 	        menu.append item_menu
 	        salir(item_menu,1) if item_value == "Salir"
-		widget_activo(item_menu,2) if item_value == "Acerca de..."
+		widget_activo(item_menu,2) if item_value == "Acerca de...."
 	    end
 	    submenu.set_submenu menu
 	    @menu.append submenu
@@ -79,13 +79,13 @@ class RubyApp < Gtk::Window
       end
     end
  
-    #setea el tooltip del @boton y agrega un metodo en caso que se haga un click
+    #Se arregla el tooltip del @boton y agrega un metodo en caso que se haga un click
     def boton
       @boton.set_tooltip_text "Button widget"
       @boton.signal_connect "clicked" do |w,e|
 	mensaje_dialogo(@combo.active_iter.to_s)
       end
-      [@boton,150,60]
+      [@boton,150,70]
     end
  
     #muestra un diálogo según el valor pasado
@@ -112,10 +112,10 @@ class RubyApp < Gtk::Window
     #crea un diálogo about.
     def about_dialogo
         about = Gtk::AboutDialog.new
-        about.set_program_name "GTK y Ruby 2016"
+        about.set_program_name "Ruby y Gtk+ 2016"
         about.set_version "1.0"
         about.set_copyleft " Andruwx Free"
-        about.set_comments "Una muestra de lo que se puede hacer con Gtk y Ruby"
+        about.set_comments "Una muestra de lo que se puede hacer con Ruby y Gtk+"
         about.set_logo Gdk::Pixbuf.new "ella.png"
         about.run
         about.destroy
